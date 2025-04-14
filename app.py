@@ -6,11 +6,11 @@ from ai_suggestions import get_ai_suggestion_dict
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
+@app.route("/")
 def home():
     return "Don Bot API is running 😎"
 
-@app.route('/api/breakouts', methods=['GET'])
+@app.route("/api/breakouts", methods=["GET"])
 def get_breakouts():
     try:
         print("📂 Reading breakout_stocks.csv...")
@@ -43,5 +43,6 @@ def get_breakouts():
         print(e)
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# ❌ Do NOT include app.run() — Render runs via gunicorn!
+
+
